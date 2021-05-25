@@ -1,1 +1,64 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/theming";
+@import "./app/tile/tile.component.scss";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  overflow: auto;
+}
+
+.container {
+  border: 2px solid red;
+}
+
+@include mat-core();
+
+$primary: mat-palette($mat-indigo);
+$accent: mat-palette($mat-pink, A200, A100, A400);
+$theme: mat-light-theme(
+  (
+    color: (
+      primary: $primary,
+      accent: $accent,
+    ),
+  )
+);
+
+/** deleting begin
+@mixin test-color($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  .test {
+    background-color: mat-color($primary);
+    border-color: mat-color($accent, 400);
+  }
+}
+
+deleting end*/
+
+@include angular-material-theme($theme);
+@include tile-theme($theme);
+@include test-color($theme);
+// another dark theme
+
+.dark-theme {
+  $dark-primary: mat-palette($mat-blue-grey);
+  $dark-accent: mat-palette($mat-amber, A200, A100, A400);
+  $dark-warn: mat-palette($mat-deep-orange);
+  $dark-theme: mat-dark-theme(
+    (
+      color: (
+        primary: $dark-primary,
+        accent: $dark-accent,
+        warn: $dark-warn,
+      ),
+    )
+  );
+  @include angular-material-color($dark-theme);
+  @include tile-theme($dark-theme);
+  @include test-color($dark-theme);
+}

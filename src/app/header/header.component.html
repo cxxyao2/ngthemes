@@ -1,0 +1,20 @@
+<mat-toolbar color="primary" class="nav-bar mat-elevation-z2">
+  <mat-label>Centre</mat-label>
+  <span class="spacer"></span>
+  <ng-container>
+    <button mat-button>
+      <a class="nav-bar-item" routerLink="/home">Home</a>
+    </button>
+    <button mat-button>
+      <a class="nav-bar-item" routerLink="/tile">Tile</a>
+    </button>
+    <button mat-button>
+      <a class="nav-bar-item" routerLink="/dialog">Dialog</a>
+    </button>
+    <mat-slide-toggle
+      [checked]="isDarkTheme$ | async"
+      (change)="toggleDarkTheme($event.checked)"
+      >Dark theme</mat-slide-toggle
+    >
+  </ng-container>
+</mat-toolbar>

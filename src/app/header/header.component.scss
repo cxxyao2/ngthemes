@@ -1,0 +1,17 @@
+.nav-bar {
+  position: fixed;
+  top: 0;
+  z-index: 99;
+  height:60px;
+  .nav-bar-item {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s;
+    &:hover {
+      opacity: 0.6;
+    }
+  }
+}
+.spacer {
+  flex: 1 1 auto;
+}
