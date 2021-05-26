@@ -1,0 +1,65 @@
+@import "~@angular/material/theming";
+
+@import "./app/tile/tile.component.scss";
+/* 目标:通过@each 循环,建立10个theme( 5*2, 2分别是lighter darker) */
+
+/* create a map, key is used as class name. */
+$app-themes: (
+  indigo-pink: (
+    primary-base: $mat-indigo,
+    accent-base: $mat-pink,
+  ),
+  deeppurple-amber: (
+    primary-base: $mat-deep-purple,
+    accent-base: $mat-amber,
+  ),
+  blue-yellow: (
+    primary-base: $mat-blue,
+    accent-base: $mat-yellow,
+  ),
+  pink-bluegrey: (
+    primary-base: $mat-pink,
+    accent-base: $mat-blue-gray,
+  ),
+  purple-green: (
+    primary-base: $mat-purple,
+    accent-base: $mat-green,
+  ),
+);
+
+@each $css-class, $theme in $app-themes {
+  $primary: mat-palette(map-get($theme, primary-base));
+  $accent: mat-palette(map-get($theme, accent-base));
+
+  // key is name of css class
+  .#{$css-class} {
+    $light-theme: mat-light-theme(
+      (
+        color: (
+          primary: $primary,
+          accent: $accent,
+        ),
+      )
+    );
+    // color theming
+    @include angular-material-color($light-theme);
+    // customized component
+    @include tile-theme($light-theme);
+  }
+
+  // dark theme
+  .#{$css-class}-dark {
+    $dark-theme: mat-dark-theme(
+      (
+        color: (
+          primary: $primary,
+          accent: $accent,
+        ),
+      )
+    );
+    // color theming
+    @include angular-material-color($dark-theme);
+    // customized component
+    @include tile-theme($dark-theme);
+  }
+}

@@ -45,15 +45,3 @@
     @include tile-typography($typography);
   }
 }
-
-/*deleting begin*/
-@mixin test-color($theme) {
-  $primary: map-get($theme, primary);
-  $accent: map-get($theme, accent);
-  .test {
-    background-color: mat-color($primary);
-    border-color: mat-color($accent, 400);
-  }
-}
-
-/*deleting end*/

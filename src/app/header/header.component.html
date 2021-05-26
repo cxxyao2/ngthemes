@@ -11,10 +11,17 @@
     <button mat-button>
       <a class="nav-bar-item" routerLink="/dialog">Dialog</a>
     </button>
-    <mat-slide-toggle
-      [checked]="isDarkTheme$ | async"
-      (change)="toggleDarkTheme($event.checked)"
-      >Dark theme</mat-slide-toggle
-    >
+
+    <button mat-button [matMenuTriggerFor]="belowMenu">Below</button>
+    <mat-menu #belowMenu="matMenu" yPosition="below">
+      <button
+        *ngFor="let themeName of themeList; let i = index"
+        mat-menu-item
+        (click)="toggleTheme(themeName)"
+      >
+        {{ themeName }}
+      </button>
+    </mat-menu>
   </ng-container>
 </mat-toolbar>
+<!--  TODO: mat-menu-item  button 怎么设置格式，比如颜色，ngStyle绑定吗？ -->
